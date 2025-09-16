@@ -24,6 +24,12 @@ permalink: /blog/:year/:month/:day/:title/
 # Accent color
 accent_color: "#B22222"
 
+# GitHub Pages and Jekyll settings
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+
 # Exclude from processing
 exclude:
   - Gemfile
@@ -33,3 +39,7 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - README.md
+  - LICENSE
+  - .gitignore
+  - .github/
