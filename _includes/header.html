@@ -1,0 +1,56 @@
+<!-- 
+    Navigation header with clean, minimal design
+    Includes links to all main sections and external profiles
+-->
+<header class="site-header">
+    <div class="wrapper">
+        <!-- Site title/logo -->
+        <a class="site-title" href="{{ '/' | relative_url }}">
+            {{ site.title }}
+        </a>
+        
+        <div style="display: flex; align-items: center;">
+            <!-- Main navigation menu -->
+            <nav class="site-nav">
+                <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+                <label for="nav-trigger" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                
+                <ul class="nav-menu">
+                    <!-- Main section links -->
+                    <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+                    <li><a href="{{ '/education/' | relative_url }}" {% if page.url contains '/education' %}class="active"{% endif %}>Education</a></li>
+                    <li><a href="{{ '/publications/' | relative_url }}" {% if page.url contains '/publications' %}class="active"{% endif %}>Publications</a></li>
+                    <li><a href="{{ '/blog/' | relative_url }}" {% if page.url contains '/blog' %}class="active"{% endif %}>Blog</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Theme toggle button -->
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+                <span class="sr-only">Toggle color theme</span>
+                <svg class="pixel-icon theme-icon theme-icon-sun" viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+                    <rect class="pixel-soft" x="7" y="1" width="2" height="2" />
+                    <rect class="pixel-soft" x="7" y="13" width="2" height="2" />
+                    <rect class="pixel-soft" x="1" y="7" width="2" height="2" />
+                    <rect class="pixel-soft" x="13" y="7" width="2" height="2" />
+                    <rect class="pixel-soft" x="7" y="3" width="2" height="10" />
+                    <rect class="pixel-soft" x="3" y="7" width="10" height="2" />
+                    <rect class="pixel-accent" x="5" y="5" width="6" height="6" />
+                    <rect class="pixel-paper" x="6" y="6" width="2" height="2" />
+                </svg>
+                <svg class="pixel-icon theme-icon theme-icon-moon" viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+                    <rect class="pixel-accent" x="4" y="3" width="5" height="10" />
+                    <rect class="pixel-accent" x="5" y="2" width="2" height="1" />
+                    <rect class="pixel-accent" x="5" y="13" width="2" height="1" />
+                    <rect class="pixel-accent" x="3" y="5" width="1" height="6" />
+                    <rect class="pixel-dark" x="6" y="3" width="4" height="10" />
+                    <rect class="pixel-paper" x="4" y="5" width="1" height="6" />
+                    <rect class="pixel-soft" x="5" y="6" width="1" height="4" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>

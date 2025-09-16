@@ -1,0 +1,321 @@
+---
+layout: default
+---
+
+<div class="wrapper">
+    <!-- Post header -->
+    <article class="post-content">
+        <header class="post-header">
+            <h1 class="post-title">{{ page.title }}</h1>
+            
+            <div class="post-meta">
+                <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
+                {% if page.author %}
+                <span class="post-author"> • By {{ page.author }}</span>
+                {% endif %}
+                {% if page.reading_time %}
+                <span class="reading-time"> • {{ page.reading_time }} min read</span>
+                {% endif %}
+            </div>
+            
+            {% if page.tags and page.tags.size > 0 %}
+            <div class="post-tags">
+                {% for tag in page.tags %}
+                <a href="{{ '/blog/' | relative_url }}#tag-{{ tag | slugify }}" class="tag">{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </header>
+        
+        <!-- Post content -->
+        <div class="post-body">
+            {{ content }}
+        </div>
+        
+        <!-- Post footer with navigation -->
+        <footer class="post-footer">
+            <!-- Previous/Next post navigation -->
+            <div class="post-navigation">
+                {% if page.previous.url %}
+                <div class="nav-previous">
+                    <span class="nav-label">← Previous Post</span>
+                    <a href="{{ page.previous.url | relative_url }}" class="nav-title">{{ page.previous.title }}</a>
+                </div>
+                {% endif %}
+                
+                {% if page.next.url %}
+                <div class="nav-next">
+                    <span class="nav-label">Next Post →</span>
+                    <a href="{{ page.next.url | relative_url }}" class="nav-title">{{ page.next.title }}</a>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Back to blog link -->
+            <div class="back-to-blog">
+                <a href="{{ '/blog/' | relative_url }}">← Back to all posts</a>
+            </div>
+        </footer>
+    </article>
+    
+    <!-- Related posts section -->
+    {% if page.tags %}
+    <section class="related-posts">
+        <h2>Related Posts</h2>
+        
+        {% assign related_posts = site.posts | where_exp: "post", "post.url != page.url" %}
+        {% assign related_posts = related_posts | where_exp: "post", "post.tags" %}
+        {% assign filtered_posts = "" | split: "" %}
+        
+        {% for post in related_posts %}
+            {% assign common_tags = post.tags | intersection: page.tags %}
+            {% if common_tags.size > 0 %}
+                {% assign filtered_posts = filtered_posts | push: post %}
+            {% endif %}
+        {% endfor %}
+        
+        {% assign related_posts = filtered_posts | slice: 0, 3 %}
+        
+        {% if related_posts.size > 0 %}
+        <div class="related-posts-grid">
+            {% for post in related_posts %}
+            <div class="related-post-card">
+                <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                {% if post.tags %}
+                <div class="tags">
+                    {% for tag in post.tags limit: 3 %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>No related posts found. <a href="{{ '/blog/' | relative_url }}">Browse all posts</a>.</p>
+        {% endif %}
+    </section>
+    {% endif %}
+</div>
+
+<!-- Additional CSS for post layout -->
+<style>
+/* Post-specific styles */
+.post-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-title {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.post-meta {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.post-tags {
+    margin-top: 1.5rem;
+}
+
+.post-tags .tag {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Post body styling */
+.post-body {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 4rem;
+}
+
+.post-body h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.post-body h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-body p {
+    margin-bottom: 1.5rem;
+}
+
+.post-body img {
+    max-width: 100%;
+    height: auto;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.post-body blockquote {
+    border-left: 4px solid var(--accent-color);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: var(--text-light);
+    background-color: var(--background-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+}
+
+.post-body code {
+    background-color: var(--background-light);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-family: 'Courier New', monospace;
+}
+
+.post-body pre {
+    background-color: var(--background-light);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.post-body pre code {
+    background-color: transparent;
+    padding: 0;
+}
+
+/* Post footer */
+.post-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    margin-top: 3rem;
+}
+
+.post-navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.nav-previous,
+.nav-next {
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.nav-previous:hover,
+.nav-next:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 10px rgba(178, 34, 34, 0.1);
+}
+
+.nav-next {
+    text-align: right;
+}
+
+.nav-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+}
+
+.nav-title {
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.nav-title:hover {
+    color: var(--accent-color);
+}
+
+.back-to-blog {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.back-to-blog a {
+    font-family: var(--font-sans);
+    font-weight: 500;
+}
+
+/* Related posts */
+.related-posts {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.related-posts h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.related-post-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.related-post-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 20px rgba(178, 34, 34, 0.1);
+}
+
+.related-post-card h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.related-post-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .post-navigation {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .nav-next {
+        text-align: left;
+    }
+    
+    .related-posts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-body {
+        font-size: 1rem;
+    }
+}
+</style>

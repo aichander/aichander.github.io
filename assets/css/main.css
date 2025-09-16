@@ -1,0 +1,588 @@
+---
+# Front matter required for Jekyll to process this file
+---
+
+/*
+ * Main stylesheet for aichander.github.io
+ * Clean, minimal design with Helvetica typography and tight spacing
+ * Accent color: #B22222 (Firebrick red)
+ */
+
+/* CSS Variables for easy customization */
+:root {
+    --accent-color: #B22222;
+    --text-color: #2c3e50;
+    --text-light: #7f8c8d;
+    --background: #ffffff;
+    --background-light: #f8f9fa;
+    --border-color: #e9ecef;
+    --header-background: rgba(255, 255, 255, 0.95);
+
+    /* Helvetica font stack with common system fallbacks */
+    --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', monospace;
+    
+    /* Reduced spacing for tighter layout */
+    --spacing-unit: 1rem;
+    --max-width: 800px;
+    --border-radius: 6px;
+    --transition: all 0.3s ease;
+}
+
+/* Dark mode variables */
+[data-theme="dark"] {
+    --accent-color: #B22222;
+    --text-color: #e9ecef;
+    --text-light: #ced4da;
+    --background: #1a1a1a;
+    --background-light: #2d2d2d;
+    --border-color: #4a4a4a;
+    --header-background: rgba(26, 26, 26, 0.95);
+}
+
+/* Ensure smooth transitions when switching themes */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+    scroll-behavior: smooth;
+    font-size: 18px; /* Larger base font for better readability */
+}
+
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    line-height: 1.5; /* Reduced from 1.7 for tighter spacing */
+    color: var(--text-color);
+    background-color: var(--background);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    line-height: 1.2; /* Reduced from 1.3 for tighter spacing */
+    margin-top: 1.5rem; /* Reduced from 2rem */
+    margin-bottom: 0.75rem; /* Reduced from 1rem */
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.25rem; /* Reduced from 0.5rem */
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 0.8rem; /* Reduced from 1.2rem */
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #8B0000; /* Darker shade of accent color */
+    text-decoration: underline;
+}
+
+/* Layout components */
+.wrapper {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.main-content {
+    min-height: calc(100vh - 200px); /* Ensure footer sticks to bottom */
+    padding: 0.5rem 0; /* Reduced from var(--spacing-unit) 0 */
+}
+
+/* Header and Navigation */
+.site-header {
+    background-color: var(--header-background);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.site-header .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.5rem; /* Reduced from 1rem */
+    padding-bottom: 0.5rem; /* Reduced from 1rem */
+}
+
+.site-title {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.site-title:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+/* Remove profile picture imagery from the header entirely */
+.site-title img {
+    display: none;
+}
+
+/* Theme toggle */
+.theme-toggle {
+    position: relative;
+    background-color: var(--header-background);
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 0.25rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 3px 0 rgba(178, 34, 34, 0.2);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 rgba(178, 34, 34, 0.3);
+    background-color: var(--background-light);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 3px;
+}
+
+.theme-toggle svg {
+    width: 22px;
+    height: 22px;
+}
+
+.theme-toggle .theme-icon {
+    display: none;
+}
+
+body:not([data-theme="dark"]) .theme-toggle .theme-icon-sun {
+    display: block;
+}
+
+body[data-theme="dark"] .theme-toggle .theme-icon-moon {
+    display: block;
+}
+
+/* Navigation menu */
+.nav-trigger {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem; /* Reduced from 2rem */
+}
+
+.nav-menu li a {
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: var(--accent-color);
+}
+
+.nav-menu li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* Mobile menu toggle */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-color);
+    transition: var(--transition);
+}
+
+/* Responsive navigation */
+@media (max-width: 768px) {
+    .site-header .wrapper > div {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .menu-icon {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--background);
+        border-top: 1px solid var(--border-color);
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: var(--transition);
+    }
+    
+    .nav-trigger:checked ~ .nav-menu {
+        max-height: 300px;
+        padding: 1rem 0;
+    }
+    
+    .nav-menu li {
+        text-align: center;
+    }
+    
+    .nav-menu li a {
+        display: block;
+        padding: 0.75rem var(--spacing-unit);
+    }
+    
+    .theme-toggle {
+        margin-left: 0;
+    }
+}
+
+/* Page sections */
+.page-section {
+    margin-bottom: 2rem; /* Reduced from 3rem */
+    padding: 1rem 0; /* Reduced from 2rem 0 */
+}
+
+.page-section:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Home page hero section */
+.hero-section {
+    text-align: center;
+    padding: 2rem 0; /* Reduced from 4rem 0 */
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background) 100%);
+    margin: -1rem -1rem 2rem -1rem; /* Reduced margins */
+}
+
+.hero-section h1 {
+    margin-top: 0;
+    margin-bottom: 0.75rem; /* Reduced from 1rem */
+}
+
+.hero-section .subtitle {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem; /* Reduced from 2rem */
+    font-style: italic;
+}
+
+/* Cards and content blocks */
+.content-card {
+    background-color: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+.content-card:hover {
+    box-shadow: 0 4px 20px rgba(178, 34, 34, 0.1);
+    border-color: var(--accent-color);
+}
+
+/* Blog post styles */
+.post-list {
+    list-style: none;
+    padding: 0;
+}
+
+.post-item {
+    margin-bottom: 1.5rem; /* Reduced from 2rem */
+    padding-bottom: 1.5rem; /* Reduced from 2rem */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.post-item:last-child {
+    border-bottom: none;
+}
+
+.post-meta {
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+}
+
+.post-title {
+    margin-top: 0;
+    margin-bottom: 0.4rem; /* Reduced from 0.5rem */
+}
+
+.post-excerpt {
+    margin-bottom: 0.75rem; /* Reduced from 1rem */
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem; /* Reduced from 0.5rem */
+    margin-top: 0.75rem; /* Reduced from 1rem */
+}
+
+.tag {
+    background-color: var(--background-light);
+    color: var(--text-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: var(--font-primary);
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.tag:hover {
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--background-light);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 0 1.5rem; /* Reduced from 3rem 0 2rem */
+    margin-top: 2.5rem; /* Reduced from 4rem */
+}
+
+.social-links h3 {
+    margin-top: 0;
+    margin-bottom: 1rem; /* Reduced from 1.5rem */
+    text-align: center;
+}
+
+.social-list {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Reduced from 2rem */
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0; /* Reduced from 2rem */
+}
+
+.social-list li a {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.social-list li a:hover {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 2px;
+    background-color: var(--background);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-list li a:hover .social-icon {
+    border-color: var(--accent-color);
+    box-shadow: 0 4px 0 rgba(178, 34, 34, 0.15);
+    transform: translateY(-2px);
+}
+
+.pixel-icon {
+    width: 100%;
+    height: 100%;
+    shape-rendering: crispEdges;
+}
+
+.pixel-icon rect,
+.pixel-icon path {
+    shape-rendering: inherit;
+}
+
+.pixel-icon .pixel-dark {
+    fill: #1f1f1f;
+}
+
+.pixel-icon .pixel-light {
+    fill: #f8f6f8;
+}
+
+.pixel-icon .pixel-soft {
+    fill: #ffc4d6;
+}
+
+.pixel-icon .pixel-accent {
+    fill: var(--accent-color);
+}
+
+.pixel-icon .pixel-blue-dark {
+    fill: #2b47c7;
+}
+
+.pixel-icon .pixel-blue {
+    fill: #3d64f2;
+}
+
+.pixel-icon .pixel-paper {
+    fill: #ffffff;
+}
+
+.pixel-icon .pixel-ink {
+    fill: #2c2c2c;
+}
+
+.pixel-icon .pixel-window {
+    fill: #cfe0ff;
+}
+
+.footer-info {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem; /* Reduced from 1.5rem */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    :root {
+        --spacing-unit: 0.75rem; /* Reduced from 1rem */
+    }
+    
+    html {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section {
+        padding: 1.5rem 0; /* Reduced from 2rem 0 */
+        margin: -0.75rem -0.75rem 1.5rem -0.75rem; /* Reduced margins */
+    }
+    
+    .social-list {
+        flex-direction: column;
+        gap: 0.75rem; /* Reduced from 1rem */
+        align-items: center;
+    }
+    
+    .content-card {
+        padding: 1rem; /* Reduced from 1.5rem */
+    }
+}
+
+/* Print styles */
+@media print {
+    .site-header,
+    .site-footer,
+    .nav-menu {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+    
+    a {
+        color: var(--text-color);
+        text-decoration: underline;
+    }
+}

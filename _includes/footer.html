@@ -1,0 +1,147 @@
+<!-- 
+    Footer with social links and contact information
+    Clean, minimal design with accent color highlights
+-->
+<footer class="site-footer">
+    <div class="wrapper">
+        <!-- Social links section -->
+        <div class="social-links">
+            <h3>Connect with me</h3>
+            <ul class="social-list">
+                {% if site.github_username %}
+                <li>
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg class="pixel-icon pixel-icon--github" viewBox="0 0 16 16" focusable="false">
+                                <rect class="pixel-dark" x="3" y="1" width="2" height="2" />
+                                <rect class="pixel-dark" x="11" y="1" width="2" height="2" />
+                                <rect class="pixel-soft" x="3" y="2" width="2" height="1" />
+                                <rect class="pixel-soft" x="11" y="2" width="2" height="1" />
+                                <rect class="pixel-dark" x="2" y="3" width="12" height="9" />
+                                <rect class="pixel-light" x="5" y="4" width="6" height="1" />
+                                <rect class="pixel-light" x="4" y="5" width="8" height="5" />
+                                <rect class="pixel-dark" x="5" y="6" width="1" height="1" />
+                                <rect class="pixel-dark" x="10" y="6" width="1" height="1" />
+                                <rect class="pixel-accent" x="7" y="8" width="2" height="1" />
+                                <rect class="pixel-soft" x="4" y="8" width="1" height="1" />
+                                <rect class="pixel-soft" x="11" y="8" width="1" height="1" />
+                                <rect class="pixel-dark" x="6" y="9" width="4" height="1" />
+                                <rect class="pixel-light" x="6" y="10" width="4" height="1" />
+                                <rect class="pixel-dark" x="4" y="12" width="8" height="1" />
+                                <rect class="pixel-dark" x="5" y="13" width="6" height="1" />
+                            </svg>
+                        </span>
+                        <span class="link-text">GitHub</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if site.linkedin_username %}
+                <li>
+                    <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener noreferrer">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg class="pixel-icon pixel-icon--linkedin" viewBox="0 0 16 16" focusable="false">
+                                <rect class="pixel-blue-dark" x="2" y="2" width="12" height="12" />
+                                <rect class="pixel-blue" x="3" y="3" width="10" height="10" />
+                                <rect class="pixel-light" x="4" y="4" width="2" height="1" />
+                                <rect class="pixel-light" x="4" y="6" width="2" height="7" />
+                                <rect class="pixel-light" x="8" y="6" width="4" height="2" />
+                                <rect class="pixel-light" x="8" y="8" width="2" height="5" />
+                                <rect class="pixel-light" x="10" y="8" width="2" height="5" />
+                                <rect class="pixel-blue" x="9" y="9" width="1" height="3" />
+                            </svg>
+                        </span>
+                        <span class="link-text">LinkedIn</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if site.email %}
+                <li>
+                    <a href="mailto:{{ site.email }}">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg class="pixel-icon pixel-icon--email" viewBox="0 0 16 16" focusable="false">
+                                <rect class="pixel-accent" x="2" y="4" width="12" height="1" />
+                                <rect class="pixel-accent" x="2" y="11" width="12" height="1" />
+                                <rect class="pixel-accent" x="2" y="4" width="1" height="8" />
+                                <rect class="pixel-accent" x="13" y="4" width="1" height="8" />
+                                <rect class="pixel-paper" x="3" y="5" width="10" height="6" />
+                                <rect class="pixel-soft" x="3" y="6" width="10" height="1" />
+                                <rect class="pixel-accent" x="3" y="7" width="1" height="1" />
+                                <rect class="pixel-accent" x="4" y="8" width="1" height="1" />
+                                <rect class="pixel-accent" x="5" y="9" width="1" height="1" />
+                                <rect class="pixel-accent" x="6" y="10" width="1" height="1" />
+                                <rect class="pixel-accent" x="12" y="7" width="1" height="1" />
+                                <rect class="pixel-accent" x="11" y="8" width="1" height="1" />
+                                <rect class="pixel-accent" x="10" y="9" width="1" height="1" />
+                                <rect class="pixel-accent" x="9" y="10" width="1" height="1" />
+                                <rect class="pixel-accent" x="7" y="9" width="2" height="1" />
+                                <rect class="pixel-soft" x="10" y="6" width="2" height="2" />
+                            </svg>
+                        </span>
+                        <span class="link-text">Email</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if site.work_website %}
+                <li>
+                    <a href="{{ site.work_website }}" target="_blank" rel="noopener noreferrer">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg class="pixel-icon pixel-icon--work" viewBox="0 0 16 16" focusable="false">
+                                <rect class="pixel-light" x="5" y="2" width="6" height="1" />
+                                <rect class="pixel-dark" x="4" y="3" width="8" height="10" />
+                                <rect class="pixel-accent" x="3" y="4" width="10" height="1" />
+                                <rect class="pixel-window" x="5" y="5" width="1" height="1" />
+                                <rect class="pixel-window" x="7" y="5" width="1" height="1" />
+                                <rect class="pixel-window" x="9" y="5" width="1" height="1" />
+                                <rect class="pixel-window" x="5" y="7" width="1" height="1" />
+                                <rect class="pixel-window" x="7" y="7" width="1" height="1" />
+                                <rect class="pixel-window" x="9" y="7" width="1" height="1" />
+                                <rect class="pixel-window" x="5" y="9" width="1" height="1" />
+                                <rect class="pixel-window" x="7" y="9" width="1" height="1" />
+                                <rect class="pixel-window" x="9" y="9" width="1" height="1" />
+                                <rect class="pixel-window" x="7" y="11" width="2" height="2" />
+                                <rect class="pixel-accent" x="8" y="12" width="1" height="1" />
+                                <rect class="pixel-accent" x="3" y="13" width="10" height="1" />
+                                <rect class="pixel-dark" x="4" y="14" width="8" height="1" />
+                            </svg>
+                        </span>
+                        <span class="link-text">Work</span>
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if site.resume_url %}
+                <li>
+                    <a href="{{ site.resume_url }}" target="_blank" rel="noopener noreferrer">
+                        <span class="social-icon" aria-hidden="true">
+                            <svg class="pixel-icon pixel-icon--resume" viewBox="0 0 16 16" focusable="false">
+                                <rect class="pixel-paper" x="4" y="2" width="8" height="12" />
+                                <rect class="pixel-dark" x="4" y="2" width="8" height="1" />
+                                <rect class="pixel-dark" x="4" y="13" width="8" height="1" />
+                                <rect class="pixel-dark" x="4" y="2" width="1" height="12" />
+                                <rect class="pixel-dark" x="11" y="2" width="1" height="12" />
+                                <rect class="pixel-soft" x="9" y="2" width="3" height="3" />
+                                <rect class="pixel-paper" x="10" y="3" width="2" height="2" />
+                                <rect class="pixel-accent" x="5" y="3" width="4" height="2" />
+                                <rect class="pixel-ink" x="5" y="6" width="5" height="1" />
+                                <rect class="pixel-ink" x="5" y="8" width="5" height="1" />
+                                <rect class="pixel-ink" x="5" y="10" width="4" height="1" />
+                                <rect class="pixel-soft" x="5" y="11" width="3" height="1" />
+                                <rect class="pixel-ink" x="5" y="12" width="4" height="1" />
+                            </svg>
+                        </span>
+                        <span class="link-text">Resume</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        
+        <!-- Copyright and site info -->
+        <div class="footer-info">
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. Built with Jekyll and hosted on GitHub Pages.</p>
+        </div>
+    </div>
+</footer>

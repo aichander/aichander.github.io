@@ -1,0 +1,35 @@
+# Site settings
+title: Aishwarya Chander
+email: aishwarya.chander@alleninstitute.org
+description: >- # Description for the site
+  A clean and minimal personal website showcasing education, 
+  publications, and thoughts through a blog.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://aichander.github.io" # the base hostname & protocol for your site
+github_username: aichander
+linkedin_username: aishwaryachander
+work_website: "https://alleninstitute.org/division/immunology/"
+resume_url: "https://drive.google.com/file/d/1uYn4C2nv9lFcqXzjj355WAHhekhuzVz1/view?usp=sharing"
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Blog settings
+permalink: /blog/:year/:month/:day/:title/
+
+# Accent color
+accent_color: "#B22222"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
